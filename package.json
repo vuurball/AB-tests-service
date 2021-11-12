@@ -1,0 +1,27 @@
+{
+  "name": "ab-tests-service",
+  "version": "1.0.0",
+  "description": "AB testing microservice",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/pm2/bin/pm2-runtime index.js",
+    "poststart": "node ./node_modules/pm2/bin/pm2 logs",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:start": "nodemon --inspect=0.0.0.0 index.js"
+  },
+  "keywords": [
+    "ABtest"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.6",
+    "koa": "^2.13.4",
+    "nodemon": "^2.0.15",
+    "pm2": "^5.1.2",
+    "sequelize": "^6.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0"
+  }
+}
