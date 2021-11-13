@@ -3,7 +3,7 @@
 const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 require('dotenv').config()
-const { router } = require('./routes')
+const { router } = require('./app/routes')
 
 
 

@@ -1,5 +1,6 @@
 const { dbcon, Sequelize } = require('../db')
 const { DataTypes, Model } = Sequelize
+const { getSchema } = require('./schemas/Variant')
 
 class Variant extends Model {
 
@@ -40,19 +41,7 @@ class Variant extends Model {
 
 //  Initialize table structure 
 console.log('Initialize table structure Variant')
-Variant.init(
-  {
-    id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-    experiment_id: { type: DataTypes.INTEGER, allowNull: false },
-    name: { type: DataTypes.STRING, allowNull: false },
-    allocation: { type: DataTypes.INTEGER, allowNull: false },
-  }, 
-  {
-    tableName: 'variants',
-    timestamps: false,
-    freezeTableName: true,
-    sequelize: dbcon,
-  }
-)
+const { schema, options } = getSchema(dbcon, DataTypes)
+Variant.init(schema, options)
 
 module.exports = Variant

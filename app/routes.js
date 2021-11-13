@@ -7,16 +7,19 @@ const controller = require('./controller')
 const router = new Router()
 
 router.get(['/', '/ping'], ctx => ctx.body = 'pong')
+
+
 /**
- * returns a varient to use for the given tested entity in the given experiment
+ * returns a variant to use for the given tested entity in the given experiment
  */
-router.get('/varient/:experimentName/:testedEntityType/:testedEntityId', async ctx => await controller.getVarient(ctx))
+router.get('/variant/:experimentName/:testedEntityType/:testedEntityId', async ctx => await controller.getVariant(ctx))
 
 
 /**
- * logs an event occurence for the relevant experiments
+ * logs an event occurrence for the relevant experiments
  */
 router.post('/event', async ctx => await controller.logEvent(ctx))
+
 
 
 module.exports = { router }

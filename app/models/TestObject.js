@@ -1,5 +1,7 @@
 const { dbcon, Sequelize } = require('../db')
 const { DataTypes, Model } = Sequelize
+const { getSchema } = require('./schemas/TestObjectEvent')
+
 
 class TestObject extends Model {
 
@@ -30,21 +32,7 @@ class TestObject extends Model {
 
 //  Initialize table structure 
 console.log('Initialize table structure TestObject')
-TestObject.init(
-  {
-    id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-    experiment_id: { type: DataTypes.INTEGER, allowNull: false },
-    tested_entity_type: { type: DataTypes.STRING, allowNull: false },
-    tested_entity_id: { type: DataTypes.STRING, allowNull: false },
-    variant_id: { type: DataTypes.INTEGER, allowNull: false }
-  },
-  {
-    tableName: 'test_objects',
-    timestamps: false,
-    freezeTableName: true,
-    sequelize: dbcon,
-  }
-)
-
+const { schema, options } = getSchema(dbcon, DataTypes)
+TestObject.init(schema, options)
 
 module.exports = TestObject
