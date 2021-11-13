@@ -16,7 +16,11 @@
   "license": "ISC",
   "dependencies": {
     "config": "^3.3.6",
+    "dotenv": "^10.0.0",
     "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.1.1",
+    "mysql2": "^2.3.3-rc.0",
     "nodemon": "^2.0.15",
     "pm2": "^5.1.2",
     "sequelize": "^6.9.0"

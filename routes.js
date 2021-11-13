@@ -6,10 +6,11 @@ const controller = require('./controller')
 
 const router = new Router()
 
+router.get(['/', '/ping'], ctx => ctx.body = 'pong')
 /**
  * returns a varient to use for the given tested entity in the given experiment
  */
-router.get('/varient/:experimentId/:testedEntityType/:testedEntityId', async ctx => await controller.getVarient(ctx))
+router.get('/varient/:experimentName/:testedEntityType/:testedEntityId', async ctx => await controller.getVarient(ctx))
 
 
 /**
