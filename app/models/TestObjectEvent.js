@@ -38,11 +38,13 @@ class TestObjectEvent extends Model {
       INNER JOIN test_objects objs ON objs.experiment_id = ex.id
       WHERE ev.name = :eventName
         AND ex.is_active = 1
+        AND ex.start_at < :now
+        AND ex.end_at > :now
         AND objs.tested_entity_type = :testedEntityType
         AND objs.tested_entity_id = :testedEntityId`
 
     const res = await dbcon.query(sql, { 
-      replacements: { eventName, testedEntityType, testedEntityId },
+      replacements: { eventName, testedEntityType, testedEntityId, now: (Math.floor(new Date() / 1000)) },
       type: Sequelize.QueryTypes.SELECT
     })
     return res

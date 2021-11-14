@@ -15,7 +15,8 @@ exports.getVariant = async (ctx) => {
   try {
     const experiment = await Experiment.findByName(experimentName)
     if (experiment) {
-      if (experiment.is_active == 1 /* todo and time within range */) {
+      const now = Math.floor(new Date() / 1000)
+      if (experiment.is_active == 1 && experiment.start_at < now && now < experiment.end_at ) {
         const testObject = await TestObject.findExistingTestObject(experiment.id, testedEntityType, testedEntityId)
         if (testObject) {
           const variant = await Variant.findById(testObject.variant_id)
@@ -37,6 +38,14 @@ exports.getVariant = async (ctx) => {
     console.log(err)
   }
   ctx.body = { variant: variantToUse }
+}
+
+
+/**
+ * @returns a list of currently active experiments
+ */
+exports.getActiveExperiments = async (ctx) => {
+  ctx.body = await Experiment.findAllActive()
 }
 
 

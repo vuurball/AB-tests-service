@@ -1,6 +1,6 @@
 const { dbcon, Sequelize } = require('../db')
 const { DataTypes, Model } = Sequelize
-const { getSchema } = require('./schemas/TestObjectEvent')
+const { getSchema } = require('./schemas/TestObject')
 
 
 class TestObject extends Model {

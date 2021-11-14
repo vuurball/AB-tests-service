@@ -7,8 +7,8 @@ exports.getSchema = (dbcon, DataTypes) => {
       name: { type: DataTypes.STRING, allowNull: false, unique: true },
       default_variant_name: { type: DataTypes.STRING, allowNull: false },
       is_active: { type: DataTypes.TINYINT, allowNull: false, defaultValue: '0' },
-      start_at: { type: DataTypes.DATE },
-      end_at: { type: DataTypes.DATE }
+      start_at: { type: DataTypes.INTEGER, allowNull: false },
+      end_at: { type: DataTypes.INTEGER, allowNull: false }
     },
     options: {
       tableName: 'experiments',
