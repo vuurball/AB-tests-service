@@ -1,4 +1,4 @@
-const { dbcon, Sequelize } = require('../db')
+const { dbcon, Sequelize } = require('../../database/db')
 const { DataTypes, Model } = Sequelize
 const { getSchema } = require('./schemas/TestObjectEvent')
 

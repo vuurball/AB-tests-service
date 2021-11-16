@@ -52,8 +52,8 @@ exports.getActiveExperiments = async (ctx) => {
 /**
  * logs an event occurrence for the relevant experiments
  * @param {string} eventName - the event that happened
- * @param {string|int} testedEntityType - the entity type that triggered the event and is being tested (i.e user|lead|visitor|etc)
- * @param {string|int} testedEntityId - the entity type id (i.e user id| lead id| visitor id| etc)
+ * @param {string|int} testedEntityType - the entity type that triggered the event and is being tested (i.e session|user|lead|visitor|etc)
+ * @param {string|int} testedEntityId - the entity type id (i.e user id| lead id| visitor id| session id| etc)
  * @param {string|object} eventData - optional data for tracking/analizing - (i.e if lead x triggered 'register' event, the registered user-id can be saved)
  */
 exports.logEvent = async (ctx) => {
